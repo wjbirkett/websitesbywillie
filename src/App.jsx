@@ -14,7 +14,7 @@ function Nav() {
 
   return (
     <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-      <a href="#hero" className="nav__logo">W<span>.</span></a>
+      <a href="#hero" className="nav__logo" aria-label="Websites by Willie Home">W<span>.</span></a>
       <ul className="nav__links">
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
@@ -44,6 +44,11 @@ function Hero() {
           your customers can find — built with modern tools and handed off
           with full ownership. From first call to launch, usually in a week.
         </p>
+        <div className="hero__trust animate-up delay-4">
+          <span>✓ Fast turnaround</span>
+          <span>✓ You own the code</span>
+          <span>✓ No platform lock-in</span>
+        </div>
         <div className="hero__actions animate-up delay-4">
           <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
             Book a free 15-minute call
@@ -64,10 +69,10 @@ function Hero() {
 /* ─── PAIN POINTS ─── */
 function PainPoints() {
   const pains = [
-    'You\'re embarrassed to share your current website because it looks old or isn\'t mobile-friendly.',
-    'You\'re losing customers because your site looks outdated or doesn\'t show up on Google.',
-    'You\'re tired of paying monthly fees for a site that\'s hard to update and constantly breaks.',
-    'You just want a simple, professional online presence so customers can find you and trust you.',
+    'Your website looks outdated — and you\'re embarrassed to share it.',
+    'You\'re losing customers to competitors with better-looking sites.',
+    'You\'re tired of paying monthly fees for a site that constantly breaks.',
+    'You just want a simple, professional presence that works on every device.',
   ]
   return (
     <section className="painpoints">
@@ -108,9 +113,9 @@ function Services() {
     },
     {
       num: '03',
-      title: 'Web apps & dashboards',
-      desc: 'Custom tools that do real work — client portals, internal dashboards, lead trackers, booking systems. Built with React, deployed on Vercel.',
-      tags: ['Dashboard', 'SaaS', 'Internal tools'],
+      title: 'Advanced projects',
+      desc: 'Custom tools built for specific business needs — client portals, booking systems, lead trackers, internal dashboards. Scoped and quoted per project.',
+      tags: ['Custom tool', 'Portal', 'Booking system'],
     },
   ]
 
@@ -140,9 +145,8 @@ function Services() {
         <div className="ai-blurb">
           <p>
             <strong>Faster turnaround, more value.</strong>{' '}
-            I use modern tools to work efficiently — so you get a better site,
-            faster, without paying agency rates. Every site is still built and
-            customized specifically for your business.
+            I combine modern tools with hands-on custom work — so you get
+            premium quality without the premium price tag.
           </p>
         </div>
 
@@ -203,6 +207,26 @@ function IncludedAndWho() {
               free tier — that's a saving of roughly <strong>$1,800 over 3 years</strong> compared
               to typical managed WordPress hosting. The domain (~$12/yr) is registered
               in your name and paid directly by you.
+            </div>
+
+            {/* Cost comparison table */}
+            <div className="cost-table">
+              <div className="cost-table__row cost-table__header">
+                <span>Option</span>
+                <span>Monthly cost</span>
+              </div>
+              <div className="cost-table__row">
+                <span>DIY builder (Wix/Squarespace)</span>
+                <span>$30–$60/mo forever</span>
+              </div>
+              <div className="cost-table__row">
+                <span>WordPress agency</span>
+                <span>$100–$300/mo</span>
+              </div>
+              <div className="cost-table__row cost-table__highlight">
+                <span><strong>Websites by Willie</strong></span>
+                <span><strong>One-time build. $0/mo hosting.</strong></span>
+              </div>
             </div>
 
             {/* Guarantee */}
@@ -280,7 +304,7 @@ function Portfolio() {
             <div className={`project-card project-card--${p.theme}`} key={p.title}>
               <div className="project-card__img-wrap">
                 {p.img ? (
-                  <img src={p.img} alt={`${p.title} screenshot`} className="project-card__img" />
+                  <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" className="project-card__img" />
                 ) : (
                   <div className="project-card__placeholder">
                     <span>Lead Tracker</span>
@@ -437,6 +461,9 @@ function Pricing() {
         <p className="plans__payment-note">
           50% to start · 50% before launch · Stripe or ACH
         </p>
+        <p className="plans__addons-note">
+          Add-ons available: copywriting, logo design, extra revision rounds — quoted per project.
+        </p>
         <p className="plans__maintenance-note">
           Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $150/mo covers minor updates, text changes, and priority support so you never have to touch the code.
         </p>
@@ -453,6 +480,10 @@ function FAQ() {
   const [open, setOpen] = useState(null)
 
   const faqs = [
+    {
+      q: 'Why not just use Wix or Squarespace?',
+      a: 'DIY builders are great if you want to build the site yourself. Most business owners try them first and realize the design still looks DIY, SEO setup is confusing, and the monthly fees add up fast. I build the site for you so it looks professional from day one — and you own everything with no ongoing platform fees.',
+    },
     {
       q: 'How long does it take?',
       a: 'A one-page site is usually done in about 5 days once I have your content. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that\'s the most common delay, not the build itself.',
@@ -521,10 +552,12 @@ function FAQ() {
 function Contact() {
   const [form, setForm] = useState({ name: '', business: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try {
       await fetch('https://formspree.io/f/xbdzzjro', {
         method: 'POST',
@@ -532,8 +565,11 @@ function Contact() {
         body: JSON.stringify(form)
       })
       setSubmitted(true)
+      setForm({ name: '', business: '', email: '', message: '' })
     } catch (err) {
       console.error('Form error:', err)
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -545,22 +581,25 @@ function Contact() {
             <span className="section-label">Contact</span>
             <h2 className="section-title">Let's talk about<br />your project</h2>
             <p className="contact__sub">
-              Book a free 15-minute call and we'll figure out exactly what your business needs — no pitch, no pressure.
+              Book a free 15-minute call — the quickest way to get a clear quote and timeline for your project.
             </p>
             <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary" style={{marginBottom: 'var(--space-md)', display: 'inline-flex'}}>
               Book a call on Calendly
             </a>
-            <p className="contact__or">or send a message below</p>
+            <p className="contact__or">or send a message below — I'll reply within one business day (EST)</p>
             <a href="mailto:willie@websitesbywillie.com" className="contact__email">
               willie@websitesbywillie.com
             </a>
+            <p className="contact__scarcity">
+              I take on 2–3 projects per month — book a call to check availability.
+            </p>
           </div>
           <div className="contact__form-wrap">
             {submitted ? (
               <div className="contact__success">
                 <span className="contact__success-icon">✓</span>
                 <h3>Message sent!</h3>
-                <p>I'll get back to you within one business day.</p>
+                <p>I'll get back to you within one business day (EST).</p>
               </div>
             ) : (
               <form className="contact__form" onSubmit={handleSubmit}>
@@ -598,8 +637,8 @@ function Contact() {
                     value={form.message} onChange={handleChange}
                   />
                 </div>
-                <button type="submit" className="btn btn--primary btn--full">
-                  Send message
+                <button type="submit" className="btn btn--primary btn--full" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send message'}
                 </button>
               </form>
             )}

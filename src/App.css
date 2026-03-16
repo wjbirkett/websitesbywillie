@@ -1058,6 +1058,76 @@
   color: var(--ink);
 }
 
+/* ── HERO TRUST BADGES ── */
+.hero__trust {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.hero__trust span {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  font-weight: 500;
+}
+
+/* ── COST TABLE ── */
+.cost-table {
+  margin-top: var(--space-lg);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.cost-table__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.6rem var(--space-md);
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cost-table__row:last-child {
+  border-bottom: none;
+}
+
+.cost-table__header {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cost-table__row:not(.cost-table__header):not(.cost-table__highlight) {
+  background: var(--paper-warm);
+  color: var(--ink-soft);
+}
+
+.cost-table__highlight {
+  background: var(--highlight-soft);
+  color: var(--ink);
+  border-top: 1px solid var(--highlight);
+}
+
+/* ── PLANS ADDONS NOTE ── */
+.plans__addons-note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--ink-mute);
+  margin-top: var(--space-xs);
+}
+
+/* ── CONTACT SCARCITY ── */
+.contact__scarcity {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  margin-top: var(--space-md);
+  font-style: italic;
+}
+
 /* ── FOOTER ── */
 .footer {
   background: var(--ink);
