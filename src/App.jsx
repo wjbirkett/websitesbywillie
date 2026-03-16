@@ -502,7 +502,7 @@ function Pricing() {
         </div>
 
         <p className="plans__payment-note">
-          50% to start · 50% before launch · Stripe or ACH
+          50% to start · 50% before launch · Stripe, ACH, Zelle, or check
         </p>
         <p className="plans__addons-note">
           Add-ons available: copywriting, logo design, extra revision rounds — quoted per project.
@@ -549,7 +549,7 @@ function FAQ() {
     },
     {
       q: 'How does payment work?',
-      a: '50% upfront to start, 50% before launch. I accept Stripe or ACH. The deposit locks in your spot and covers the build. Final payment is due before the domain goes live.',
+      a: '50% upfront to start, 50% before launch. I accept Stripe (credit/debit card), ACH bank transfer, Zelle, or business check. The deposit locks in your spot and covers the build. Final payment is due before the domain goes live.',
     },
   ]
 
