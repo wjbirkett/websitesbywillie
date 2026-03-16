@@ -523,10 +523,18 @@ function Contact() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // In production, wire to Formspree/Resend/etc.
-    setSubmitted(true)
+    try {
+      await fetch('https://formspree.io/f/xbdzzjro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Form error:', err)
+    }
   }
 
   return (
