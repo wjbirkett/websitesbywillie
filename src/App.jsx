@@ -1,0 +1,631 @@
+import React, { useState, useEffect, useRef } from 'react'
+import knicksImg from './assets/knickshub.png'
+import escapadesImg from './assets/escapades.png'
+import './App.css'
+
+/* ─── NAV ─── */
+function Nav() {
+  const [scrolled, setScrolled] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return (
+    <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
+      <a href="#hero" className="nav__logo">W<span>.</span></a>
+      <ul className="nav__links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact" className="nav__cta">Book a call</a></li>
+      </ul>
+    </nav>
+  )
+}
+
+/* ─── HERO ─── */
+function Hero() {
+  return (
+    <section className="hero" id="hero">
+      <div className="hero__inner">
+        <p className="hero__eyebrow animate-up delay-1">
+          Willie · Connecticut & Florida
+        </p>
+        <h1 className="hero__headline animate-up delay-2">
+          Fast, modern websites<br />
+          for local service<br />
+          <span className="hero__headline--italic">businesses.</span>
+        </h1>
+        <p className="hero__sub animate-up delay-3">
+          No monthly platform fees. No lock-in. Just a clean, fast website
+          your customers can find — built with modern tools and handed off
+          with full ownership. From first call to launch, usually in a week.
+        </p>
+        <div className="hero__actions animate-up delay-4">
+          <a href="#contact" className="btn btn--primary">
+            Book a free 15-minute call
+          </a>
+          <a href="#portfolio" className="btn btn--ghost">
+            See the work ↓
+          </a>
+        </div>
+        <p className="hero__tech animate-up delay-5">
+          Built with React + Vercel — meaning sites load fast, stay up, and cost nothing to host.
+        </p>
+      </div>
+      <div className="hero__rule" aria-hidden="true" />
+    </section>
+  )
+}
+
+/* ─── PAIN POINTS ─── */
+function PainPoints() {
+  const pains = [
+    'You\'re embarrassed to share your current website because it looks old or isn\'t mobile-friendly.',
+    'You\'re losing customers because your site looks outdated or doesn\'t show up on Google.',
+    'You\'re tired of paying monthly fees for a site that\'s hard to update and constantly breaks.',
+    'You just want a simple, professional online presence so customers can find you and trust you.',
+  ]
+  return (
+    <section className="painpoints">
+      <div className="container">
+        <div className="painpoints__inner">
+          <div className="painpoints__left">
+            <p className="painpoints__q">Does this sound familiar?</p>
+            <p className="painpoints__answer">That's exactly what I fix.</p>
+          </div>
+          <ul className="painpoints__list">
+            {pains.map((p, i) => (
+              <li key={i} className="painpoints__item">
+                <span className="painpoints__dot" />
+                {p}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── SERVICES ─── */
+function Services() {
+  const cards = [
+    {
+      num: '01',
+      title: 'One-page sites',
+      desc: 'Tight, persuasive, lightning-fast. Perfect for local service businesses, consultants, and personal brands who need a polished online presence without the bloat.',
+      tags: ['Landing page', 'Portfolio', 'Link-in-bio'],
+    },
+    {
+      num: '02',
+      title: 'Multi-page sites',
+      desc: 'A full website with dedicated pages for services, about, blog, and contact. Built for businesses ready to grow their online presence and rank in local search.',
+      tags: ['Business site', 'Restaurant', 'Service co.'],
+    },
+    {
+      num: '03',
+      title: 'Web apps & dashboards',
+      desc: 'Custom tools that do real work — client portals, internal dashboards, lead trackers, booking systems. Built with React, deployed on Vercel.',
+      tags: ['Dashboard', 'SaaS', 'Internal tools'],
+    },
+  ]
+
+  return (
+    <section className="services section" id="services">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">What I do</span>
+          <h2 className="section-title">Three ways I can help</h2>
+        </div>
+        <div className="services__grid">
+          {cards.map((card) => (
+            <div className="service-card" key={card.num}>
+              <span className="service-card__num">{card.num}</span>
+              <h3 className="service-card__title">{card.title}</h3>
+              <p className="service-card__desc">{card.desc}</p>
+              <div className="service-card__tags">
+                {card.tags.map(t => (
+                  <span className="tag" key={t}>{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* AI blurb - toned down */}
+        <div className="ai-blurb">
+          <p>
+            <strong>Faster turnaround, more value.</strong>{' '}
+            I use modern tools to work efficiently — so you get a better site,
+            faster, without paying agency rates. Every site is still built and
+            customized specifically for your business.
+          </p>
+        </div>
+
+        <div className="section-cta">
+          <a href="#pricing" className="btn btn--outline">See pricing & packages →</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── INCLUDED & WHO ─── */
+function IncludedAndWho() {
+  const included = [
+    { label: 'Mobile-friendly design',      benefit: 'looks great on phones and tablets' },
+    { label: 'Fast-loading pages',          benefit: 'Google favors faster sites in search' },
+    { label: 'Contact form',               benefit: 'customers can message you instantly' },
+    { label: 'Basic SEO setup',            benefit: 'so people can find you on Google' },
+    { label: 'Secure HTTPS / SSL',         benefit: 'protects visitors and builds trust' },
+    { label: 'Google indexing setup',      benefit: 'gets your site into search results faster' },
+    { label: 'Domain connection',          benefit: 'your domain, pointed and ready' },
+    { label: 'Loom walkthrough on handoff', benefit: 'so you always know how things work' },
+  ]
+
+  const niches = [
+    'Local service businesses',
+    'Contractors & trades',
+    'Restaurants & cafés',
+    'Coaches & consultants',
+    'New businesses needing their first site',
+    'Anyone tired of overpaying for an outdated site',
+  ]
+
+  return (
+    <section className="included section">
+      <div className="container">
+        <div className="included__grid">
+
+          {/* What's included */}
+          <div className="included__col">
+            <span className="section-label">Every project includes</span>
+            <h2 className="section-title">What you get</h2>
+            <ul className="included__list">
+              {included.map(({ label, benefit }) => (
+                <li key={label} className="included__item">
+                  <span className="included__check">✓</span>
+                  <span>
+                    <strong>{label}</strong>
+                    <em> — {benefit}</em>
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {/* Hosting savings callout */}
+            <div className="hosting-callout">
+              <strong>Zero monthly fees.</strong> Sites are hosted on Vercel's
+              free tier — that's a saving of roughly <strong>$1,800 over 3 years</strong> compared
+              to typical managed WordPress hosting. The domain (~$12/yr) is registered
+              in your name and paid directly by you.
+            </div>
+
+            {/* Guarantee */}
+            <div className="guarantee">
+              <span className="guarantee__icon">✓</span>
+              <p><strong>My guarantee:</strong> You won't pay the final invoice until you're completely happy with the design.</p>
+            </div>
+
+            <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
+              <a href="#contact" className="btn btn--primary">Book a free 15-minute call →</a>
+            </div>
+          </div>
+
+          {/* Who this is for */}
+          <div className="included__col">
+            <span className="section-label">Who this is for</span>
+            <h2 className="section-title">Is this a fit?</h2>
+            <ul className="who__list">
+              {niches.map((n) => (
+                <li key={n} className="who__item">
+                  <span className="who__dot" />
+                  {n}
+                </li>
+              ))}
+            </ul>
+            <p className="who__note">
+              If you run a local business and need a professional website without agency pricing, this is for you.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── PORTFOLIO ─── */
+function Portfolio() {
+  const projects = [
+    {
+      title: 'Escapades Together',
+      type: 'Business Website',
+      desc: 'A polished marketing site for a premium event management and luxury travel company with 30+ years of excellence. Clean, conversion-focused, and brand-true.',
+      img: escapadesImg,
+      tags: ['Landing Page', 'Events', 'Travel'],
+      theme: 'light',
+    },
+    {
+      title: 'KnicksHub',
+      type: 'Web App & Dashboard',
+      desc: 'Everything Knicks, all in one place. A live dashboard with standings, injuries, betting trends, predictions, and a personalized news feed — built for die-hard fans.',
+      img: knicksImg,
+      tags: ['React', 'Dashboard', 'Sports'],
+      theme: 'dark',
+    },
+    {
+      title: 'Lead Tracker App',
+      type: 'Internal Tool',
+      desc: 'A custom lead management dashboard to track prospects, pipeline stages, follow-up dates, and conversion rates. No monthly SaaS fees — you own it.',
+      img: null,
+      tags: ['React', 'Vercel', 'Internal Tool'],
+      theme: 'neutral',
+    },
+  ]
+
+  return (
+    <section className="portfolio section" id="portfolio">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Portfolio</span>
+          <h2 className="section-title">Recent work</h2>
+        </div>
+        <div className="portfolio__grid">
+          {projects.map((p, i) => (
+            <div className={`project-card project-card--${p.theme}`} key={p.title}>
+              <div className="project-card__img-wrap">
+                {p.img ? (
+                  <img src={p.img} alt={`${p.title} screenshot`} className="project-card__img" />
+                ) : (
+                  <div className="project-card__placeholder">
+                    <span>Lead Tracker</span>
+                  </div>
+                )}
+              </div>
+              <div className="project-card__body">
+                <span className="project-card__type">{p.type}</span>
+                <h3 className="project-card__title">{p.title}</h3>
+                <p className="project-card__desc">{p.desc}</p>
+                <div className="project-card__tags">
+                  {p.tags.map(t => <span className="tag" key={t}>{t}</span>)}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="section-cta">
+          <a href="#contact" className="btn btn--outline">Want something like this? Let's talk →</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── PROCESS & PRICING ─── */
+function Pricing() {
+  const steps = [
+    {
+      num: '1',
+      title: 'Quick intro call',
+      desc: 'We chat for 15 minutes to understand your business and what the site needs to do. No pitch, just clarity.',
+    },
+    {
+      num: '2',
+      title: 'Simple proposal',
+      desc: 'Within 24 hours you get a clear scope, flat-rate price, and timeline. No mystery quotes, no hidden fees.',
+    },
+    {
+      num: '3',
+      title: 'Content & kickoff',
+      desc: 'You send logo, text, and photos — or I help. I\'ll give you a clear checklist so you know exactly what to prepare.',
+    },
+    {
+      num: '4',
+      title: 'Build & review',
+      desc: 'I build the site and share a live preview link. Revisions happen here — not after launch.',
+    },
+    {
+      num: '5',
+      title: 'Launch & handoff',
+      desc: 'Your site goes live on your domain. You get a Loom walkthrough video and all the code. Built with industry-standard code — not proprietary builders.',
+    },
+  ]
+
+  const plans = [
+    {
+      name: 'One-page site',
+      price: 'From $500',
+      desc: 'Perfect for service businesses, portfolios, and anyone who needs a clean, fast online presence.',
+      features: [
+        'Single-page scrolling site',
+        'Mobile-friendly design',
+        'Contact form',
+        'Basic SEO setup',
+        'Custom domain + hosting setup',
+        '1 round of revisions',
+        'Loom walkthrough on handoff',
+        'Delivered in ~5 days',
+      ],
+    },
+    {
+      name: '4–5 page site',
+      price: 'From $1,000',
+      desc: 'A full website for businesses ready to grow their online presence and rank in local search.',
+      features: [
+        '4–5 page design',
+        'Everything in one-page',
+        'Basic SEO setup',
+        'Google indexing setup',
+        '2 rounds of revisions',
+        'Loom walkthrough on handoff',
+        'Delivered in ~2 weeks',
+      ],
+      featured: true,
+    },
+    {
+      name: 'Web app / custom',
+      price: 'By quote',
+      desc: 'Dashboards, client portals, booking tools — anything that needs custom logic and real functionality.',
+      features: [
+        'Custom page count',
+        'React app development',
+        'API integrations',
+        'Revisions scoped per project',
+        'Ongoing support available',
+        'Timeline by scope',
+      ],
+    },
+  ]
+
+  return (
+    <section className="pricing section" id="pricing">
+      <div className="container">
+        <div className="section-header">
+          <span className="section-label">Process & Pricing</span>
+          <h2 className="section-title">How it works</h2>
+        </div>
+
+        {/* Steps */}
+        <div className="process__steps">
+          {steps.map((step, i) => (
+            <div className="process__step" key={step.num}>
+              <div className="process__step-num">{step.num}</div>
+              {i < steps.length - 1 && <div className="process__connector" aria-hidden="true" />}
+              <div className="process__step-body">
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="process__note">
+          Behind the scenes, I follow a detailed checklist covering everything from domain setup to a 30-day follow-up — so nothing gets missed.
+        </p>
+
+        {/* Plans */}
+        <div className="plans__grid">
+          {plans.map((plan) => (
+            <div className={`plan-card ${plan.featured ? 'plan-card--featured' : ''}`} key={plan.name}>
+              {plan.featured && <span className="plan-card__badge">Most popular</span>}
+              <div className="plan-card__top">
+                <h3 className="plan-card__name">{plan.name}</h3>
+                <div className="plan-card__price">{plan.price}</div>
+                <p className="plan-card__desc">{plan.desc}</p>
+              </div>
+              <ul className="plan-card__features">
+                {plan.features.map(f => (
+                  <li key={f}>
+                    <span className="plan-check">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className={`btn ${plan.featured ? 'btn--primary' : 'btn--outline'}`}>
+                Book a free call
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p className="plans__payment-note">
+          50% to start · 50% before launch · Stripe or ACH
+        </p>
+        <p className="plans__maintenance-note">
+          Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $150/mo covers minor updates, text changes, and priority support so you never have to touch the code.
+        </p>
+        <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
+          <a href="#contact" className="btn btn--primary">Book a free 15-minute call →</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── FAQ ─── */
+function FAQ() {
+  const [open, setOpen] = useState(null)
+
+  const faqs = [
+    {
+      q: 'How long does it take?',
+      a: 'A one-page site is usually done in about 5 days once I have your content. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that\'s the most common delay, not the build itself.',
+    },
+    {
+      q: 'Do I need to buy my own domain?',
+      a: 'You can, or I can walk you through it. Either way, the domain needs to be registered in your name and on your card — you should own it, not me. I\'ll handle pointing it to your site.',
+    },
+    {
+      q: 'What do I need to provide?',
+      a: 'At minimum: your logo (or I can help create something simple), the text for each page, and any photos. If you don\'t have photos, I\'ll use high-quality stock. If you\'re not sure what to write, I can help with copy for an additional fee.',
+    },
+    {
+      q: 'What if I need changes after launch?',
+      a: 'Minor bug fixes and small tweaks are on me for 30 days after launch — no charge. After that, I offer support at $75/hr with no retainer required. If you\'d prefer a completely hands-off experience, ask about the maintenance retainer: $150/mo covers minor updates and priority support. Either way, the code is yours and you can take it to any developer at any time.',
+    },
+    {
+      q: 'Can you help with copy and photos?',
+      a: 'Copywriting and sourcing/editing photos can be added to any project. Just mention it on the call and I\'ll include it in the quote.',
+    },
+    {
+      q: 'How does payment work?',
+      a: '50% upfront to start, 50% before launch. I accept Stripe or ACH. The deposit locks in your spot and covers the build. Final payment is due before the domain goes live.',
+    },
+  ]
+
+  return (
+    <section className="faq section" id="faq">
+      <div className="container">
+        <div className="faq__inner">
+          <div className="faq__left">
+            <span className="section-label">FAQ</span>
+            <h2 className="section-title">Common questions</h2>
+            <p className="faq__sub">
+              Don't see your question here?<br />
+              <a href="#contact">Just ask →</a>
+            </p>
+          </div>
+          <div className="faq__list">
+            {faqs.map((faq, i) => (
+              <div
+                className={`faq__item ${open === i ? 'faq__item--open' : ''}`}
+                key={i}
+              >
+                <button
+                  className="faq__question"
+                  onClick={() => setOpen(open === i ? null : i)}
+                  aria-expanded={open === i}
+                >
+                  <span>{faq.q}</span>
+                  <span className="faq__icon">{open === i ? '−' : '+'}</span>
+                </button>
+                <div className="faq__answer">
+                  <p>{faq.a}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── CONTACT ─── */
+function Contact() {
+  const [form, setForm] = useState({ name: '', business: '', email: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // In production, wire to Formspree/Resend/etc.
+    setSubmitted(true)
+  }
+
+  return (
+    <section className="contact section" id="contact">
+      <div className="container">
+        <div className="contact__inner">
+          <div className="contact__left">
+            <span className="section-label">Contact</span>
+            <h2 className="section-title">Let's talk about<br />your project</h2>
+            <p className="contact__sub">
+              Book a free 15-minute call and we'll figure out exactly what your business needs — no pitch, no pressure.
+            </p>
+            <a href="mailto:willie@websitesbywillie.com" className="contact__email">
+              willie@websitesbywillie.com
+            </a>
+          </div>
+          <div className="contact__form-wrap">
+            {submitted ? (
+              <div className="contact__success">
+                <span className="contact__success-icon">✓</span>
+                <h3>Message sent!</h3>
+                <p>I'll get back to you within one business day.</p>
+              </div>
+            ) : (
+              <form className="contact__form" onSubmit={handleSubmit}>
+                <div className="form-row">
+                  <div className="form-field">
+                    <label htmlFor="name">Your name</label>
+                    <input
+                      id="name" name="name" type="text" required
+                      placeholder="Jane Smith"
+                      value={form.name} onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-field">
+                    <label htmlFor="business">Business name</label>
+                    <input
+                      id="business" name="business" type="text"
+                      placeholder="Smith & Co."
+                      value={form.business} onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <div className="form-field">
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    id="email" name="email" type="email" required
+                    placeholder="jane@example.com"
+                    value={form.email} onChange={handleChange}
+                  />
+                </div>
+                <div className="form-field">
+                  <label htmlFor="message">What do you need?</label>
+                  <textarea
+                    id="message" name="message" rows="5" required
+                    placeholder="Tell me about your business and what you're looking for..."
+                    value={form.message} onChange={handleChange}
+                  />
+                </div>
+                <button type="submit" className="btn btn--primary btn--full">
+                  Send message
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── FOOTER ─── */
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container footer__inner">
+        <p className="footer__logo">Websites by Willie</p>
+        <p className="footer__copy">© {new Date().getFullYear()} websitesbywillie.com — Connecticut & Florida</p>
+      </div>
+    </footer>
+  )
+}
+
+/* ─── APP ─── */
+export default function App() {
+  return (
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <PainPoints />
+        <Services />
+        <IncludedAndWho />
+        <Portfolio />
+        <Pricing />
+        <FAQ />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  )
+}
