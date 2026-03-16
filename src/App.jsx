@@ -337,7 +337,13 @@ function Portfolio() {
             <div className={`project-card project-card--${p.theme}`} key={p.title}>
               <div className="project-card__img-wrap">
                 {p.img ? (
-                  <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" className="project-card__img" />
+                  <img
+                    src={p.img}
+                    alt={`${p.title} screenshot`}
+                    loading="lazy"
+                    className="project-card__img"
+                    style={p.title === 'Gulf Coast Barbers' ? { objectPosition: 'center 20%' } : undefined}
+                  />
                 ) : (
                   <div className="project-card__placeholder">
                     <span>{p.placeholder || p.title}</span>
