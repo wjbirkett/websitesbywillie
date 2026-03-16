@@ -4,6 +4,7 @@ import escapadesImg from './assets/escapades.png'
 import barberImg from './assets/barber.png'
 import saltlineImg from './assets/saltline.png'
 import coolbreezeImg from './assets/coolbreeze.png'
+import leadtrackerImg from './assets/leadtracker.png'
 import './App.css'
 
 /* ─── NAV ─── */
@@ -318,10 +319,10 @@ function Portfolio() {
       title: 'Lead Tracker App',
       type: 'Internal Tool / Dashboard',
       desc: 'A custom lead management dashboard to track prospects, pipeline stages, follow-up dates, and conversion rates. No monthly SaaS fees — you own it.',
-      img: null,
+      img: leadtrackerImg,
       tags: ['React', 'Dashboard', 'Internal Tool'],
       theme: 'neutral',
-      placeholder: 'Lead Tracker',
+      url: 'https://lead-tracker-3562.vercel.app/',
     },
   ]
 
