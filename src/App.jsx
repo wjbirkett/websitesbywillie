@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react'
 import knicksImg from './assets/knickshub.png'
 import escapadesImg from './assets/escapades.png'
+import barberImg from './assets/barber.png'
+import saltlineImg from './assets/saltline.png'
+import coolbreezeImg from './assets/coolbreeze.png'
 import './App.css'
 
 /* ─── NAV ─── */
@@ -288,11 +291,10 @@ function Portfolio() {
       title: 'Gulf Coast Barbers',
       type: 'One-Page Business Site',
       desc: 'A sharp, modern one-page site for a local barbershop. Online booking, services menu, and a design that makes walk-ins want to come back.',
-      img: null,
+      img: barberImg,
       tags: ['One-page', 'Local Business', 'Barber'],
       theme: 'dark',
       url: 'https://gulf-coast-barbers.vercel.app/',
-      placeholder: 'Gulf Coast Barbers',
     },
     {
       title: 'Lead Tracker App',
@@ -307,21 +309,19 @@ function Portfolio() {
       title: 'Saltline Kitchen',
       type: 'Restaurant Website',
       desc: 'A full 5-page restaurant site with interactive menu, reservation form, gallery, private dining page, and hours — built for a coastal Florida café.',
-      img: null,
+      img: saltlineImg,
       tags: ['Multi-page', 'Restaurant', 'Reservations'],
       theme: 'light',
       url: 'https://saltline-kitchen.vercel.app/',
-      placeholder: 'Saltline Kitchen',
     },
     {
       title: 'CoolBreeze HVAC',
       type: 'One-Page Service Site',
       desc: 'A conversion-focused one-pager for a local HVAC company. Emergency call CTA, service request form, reviews, and same-day service messaging built to generate calls.',
-      img: null,
+      img: coolbreezeImg,
       tags: ['One-page', 'HVAC', 'Local Service'],
       theme: 'neutral',
       url: 'https://coolbreeze-hvac.vercel.app/',
-      placeholder: 'CoolBreeze HVAC',
     },
   ]
 
