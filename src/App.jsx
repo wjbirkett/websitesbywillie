@@ -535,7 +535,7 @@ function FAQ() {
     },
     {
       q: 'How long does it take?',
-      a: 'A one-page site is usually done in about 5 days once I have your content. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that\'s the most common delay, not the build itself.',
+      a: 'A one-page site is usually done in about 5 days once I have your content and the deposit has cleared. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that\'s the most common delay, not the build itself.',
     },
     {
       q: 'Do I need to buy my own domain?',
@@ -705,6 +705,9 @@ function Footer() {
       <div className="container footer__inner">
         <p className="footer__logo">Websites by Willie</p>
         <p className="footer__copy">© {new Date().getFullYear()} websitesbywillie.com — Connecticut & Florida</p>
+        <p className="footer__legal">
+          Clients are responsible for ensuring they have the rights to all photos, images, logos, and content submitted for use in their website. Websites by Willie is not responsible for verifying copyright or permissions on client-supplied materials.
+        </p>
       </div>
     </footer>
   )

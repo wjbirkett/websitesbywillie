@@ -1229,3 +1229,14 @@
     text-align: center;
   }
 }
+
+.footer__legal {
+  font-size: 0.68rem;
+  color: var(--ink-mute);
+  opacity: 0.5;
+  text-align: center;
+  max-width: 640px;
+  margin: 0.5rem auto 0;
+  line-height: 1.6;
+  width: 100%;
+}
