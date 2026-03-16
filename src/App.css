@@ -932,6 +932,13 @@
   margin-top: var(--space-lg);
 }
 
+.contact__or {
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.04em;
+}
+
 /* ── FAQ ── */
 .faq {
   border-top: 1px solid var(--rule);

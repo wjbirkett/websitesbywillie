@@ -20,7 +20,7 @@ function Nav() {
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact" className="nav__cta">Book a call</a></li>
+        <li><a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="nav__cta">Book a call</a></li>
       </ul>
     </nav>
   )
@@ -45,7 +45,7 @@ function Hero() {
           with full ownership. From first call to launch, usually in a week.
         </p>
         <div className="hero__actions animate-up delay-4">
-          <a href="#contact" className="btn btn--primary">
+          <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
             Book a free 15-minute call
           </a>
           <a href="#portfolio" className="btn btn--ghost">
@@ -212,7 +212,7 @@ function IncludedAndWho() {
             </div>
 
             <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
-              <a href="#contact" className="btn btn--primary">Book a free 15-minute call →</a>
+              <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Book a free 15-minute call →</a>
             </div>
           </div>
 
@@ -441,7 +441,7 @@ function Pricing() {
           Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $150/mo covers minor updates, text changes, and priority support so you never have to touch the code.
         </p>
         <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
-          <a href="#contact" className="btn btn--primary">Book a free 15-minute call →</a>
+          <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Book a free 15-minute call →</a>
         </div>
       </div>
     </section>
@@ -547,6 +547,10 @@ function Contact() {
             <p className="contact__sub">
               Book a free 15-minute call and we'll figure out exactly what your business needs — no pitch, no pressure.
             </p>
+            <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary" style={{marginBottom: 'var(--space-md)', display: 'inline-flex'}}>
+              Book a call on Calendly
+            </a>
+            <p className="contact__or">or send a message below</p>
             <a href="mailto:willie@websitesbywillie.com" className="contact__email">
               willie@websitesbywillie.com
             </a>
