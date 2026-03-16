@@ -343,7 +343,6 @@ function Portfolio() {
                     alt={`${p.title} screenshot`}
                     loading="lazy"
                     className="project-card__img"
-                    style={p.title === 'Gulf Coast Barbers' ? { objectPosition: 'center 20%' } : undefined}
                   />
                 ) : (
                   <div className="project-card__placeholder">
