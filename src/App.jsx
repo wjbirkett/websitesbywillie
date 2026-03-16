@@ -273,6 +273,7 @@ function Portfolio() {
       img: escapadesImg,
       tags: ['Landing Page', 'Events', 'Travel'],
       theme: 'light',
+      url: 'https://escapadestogether.com/',
     },
     {
       title: 'KnicksHub',
@@ -281,14 +282,47 @@ function Portfolio() {
       img: knicksImg,
       tags: ['React', 'Dashboard', 'Sports'],
       theme: 'dark',
+      url: 'https://knickshub.vercel.app',
+    },
+    {
+      title: 'Gulf Coast Barbers',
+      type: 'One-Page Business Site',
+      desc: 'A sharp, modern one-page site for a local barbershop. Online booking, services menu, and a design that makes walk-ins want to come back.',
+      img: null,
+      tags: ['One-page', 'Local Business', 'Barber'],
+      theme: 'dark',
+      url: 'https://gulf-coast-barbers.vercel.app/',
+      placeholder: 'Gulf Coast Barbers',
     },
     {
       title: 'Lead Tracker App',
-      type: 'Internal Tool',
+      type: 'Internal Tool / Dashboard',
       desc: 'A custom lead management dashboard to track prospects, pipeline stages, follow-up dates, and conversion rates. No monthly SaaS fees — you own it.',
       img: null,
-      tags: ['React', 'Vercel', 'Internal Tool'],
+      tags: ['React', 'Dashboard', 'Internal Tool'],
       theme: 'neutral',
+      url: 'https://lead-tracker-sooty.vercel.app/',
+      placeholder: 'Lead Tracker',
+    },
+    {
+      title: 'Saltline Kitchen',
+      type: 'Restaurant Website',
+      desc: 'A full 5-page restaurant site with interactive menu, reservation form, gallery, private dining page, and hours — built for a coastal Florida café.',
+      img: null,
+      tags: ['Multi-page', 'Restaurant', 'Reservations'],
+      theme: 'light',
+      url: 'https://saltline-kitchen.vercel.app/',
+      placeholder: 'Saltline Kitchen',
+    },
+    {
+      title: 'CoolBreeze HVAC',
+      type: 'One-Page Service Site',
+      desc: 'A conversion-focused one-pager for a local HVAC company. Emergency call CTA, service request form, reviews, and same-day service messaging built to generate calls.',
+      img: null,
+      tags: ['One-page', 'HVAC', 'Local Service'],
+      theme: 'neutral',
+      url: 'https://coolbreeze-hvac.vercel.app/',
+      placeholder: 'CoolBreeze HVAC',
     },
   ]
 
@@ -300,14 +334,14 @@ function Portfolio() {
           <h2 className="section-title">Recent work</h2>
         </div>
         <div className="portfolio__grid">
-          {projects.map((p, i) => (
+          {projects.map((p) => (
             <div className={`project-card project-card--${p.theme}`} key={p.title}>
               <div className="project-card__img-wrap">
                 {p.img ? (
                   <img src={p.img} alt={`${p.title} screenshot`} loading="lazy" className="project-card__img" />
                 ) : (
                   <div className="project-card__placeholder">
-                    <span>Lead Tracker</span>
+                    <span>{p.placeholder || p.title}</span>
                   </div>
                 )}
               </div>
@@ -318,6 +352,16 @@ function Portfolio() {
                 <div className="project-card__tags">
                   {p.tags.map(t => <span className="tag" key={t}>{t}</span>)}
                 </div>
+                {p.url && (
+                  <a
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__link"
+                  >
+                    View live site →
+                  </a>
+                )}
               </div>
             </div>
           ))}
