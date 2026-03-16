@@ -301,7 +301,6 @@ function Portfolio() {
       img: null,
       tags: ['React', 'Dashboard', 'Internal Tool'],
       theme: 'neutral',
-      url: 'https://lead-tracker-sooty.vercel.app/',
       placeholder: 'Lead Tracker',
     },
     {
