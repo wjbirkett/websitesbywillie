@@ -514,7 +514,7 @@ function Pricing() {
           Add-ons available: copywriting, logo design, extra revision rounds — quoted per project.
         </p>
         <p className="plans__maintenance-note">
-          Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $150/mo covers minor updates, text changes, and priority support so you never have to touch the code.
+          Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $50/mo covers minor updates, text changes, and priority support so you never have to touch the code.
         </p>
         <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
           <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Book a free 15-minute call →</a>
@@ -547,7 +547,7 @@ function FAQ() {
     },
     {
       q: 'What if I need changes after launch?',
-      a: 'Minor bug fixes and small tweaks are on me for 30 days after launch — no charge. After that, I offer support at $75/hr with no retainer required. If you\'d prefer a completely hands-off experience, ask about the maintenance retainer: $150/mo covers minor updates and priority support. Either way, the code is yours and you can take it to any developer at any time.',
+      a: 'Minor bug fixes and small tweaks are on me for 30 days after launch — no charge. After that, I offer support at $75/hr with no retainer required. If you\'d prefer a completely hands-off experience, ask about the maintenance retainer: $50/mo covers minor updates and priority support. Either way, the code is yours and you can take it to any developer at any time.',
     },
     {
       q: 'Can you help with copy and photos?',
