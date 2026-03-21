@@ -413,7 +413,7 @@ function Pricing() {
   const plans = [
     {
       name: 'One-page site',
-      price: 'From $500',
+      price: 'From $400',
       desc: 'Perfect for service businesses, portfolios, and anyone who needs a clean, fast online presence.',
       features: [
         'Single-page scrolling site',
@@ -428,7 +428,7 @@ function Pricing() {
     },
     {
       name: '4–5 page site',
-      price: 'From $1,000',
+      price: 'From $800',
       desc: 'A full website for businesses ready to grow their online presence and rank in local search.',
       features: [
         '4–5 page design',
