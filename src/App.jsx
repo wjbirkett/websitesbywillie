@@ -309,11 +309,11 @@ function Portfolio() {
     {
       title: 'KnicksHub',
       type: 'Web App & Dashboard',
-      desc: 'Everything Knicks, all in one place. A live dashboard with standings, injuries, betting trends, predictions, and a personalized news feed — built for die-hard fans.',
+      desc: 'AI-powered Knicks betting predictions, best bets, and player props. ML model trained on 5,000+ games with 65% win accuracy. Full pick grading and accountability.',
       img: knicksImg,
-      tags: ['React', 'Dashboard', 'Sports'],
+      tags: ['React', 'AI/ML', 'Sports Betting'],
       theme: 'dark',
-      url: 'https://knickshub.vercel.app',
+      url: 'https://knickshub.com',
     },
     {
       title: 'Lead Tracker App',
