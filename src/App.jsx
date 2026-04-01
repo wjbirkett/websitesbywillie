@@ -340,7 +340,7 @@ function Portfolio() {
                 {p.img ? (
                   <img
                     src={p.img}
-                    alt={`${p.title} screenshot`}
+                    alt={`${p.title} - ${p.type.toLowerCase()} design by Websites by Willie`}
                     loading="lazy"
                     className="project-card__img"
                   />
