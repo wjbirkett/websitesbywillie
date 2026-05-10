@@ -170,6 +170,8 @@
   cursor: pointer;
   padding: 4px;
   border-radius: var(--radius);
+  position: relative;
+  z-index: 201;
 }
 
 .nav__hamburger span {
@@ -248,6 +250,8 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
   z-index: 199;
+  border: 0;
+  padding: 0;
 }
 
 /* ── TESTIMONIALS ── */
@@ -742,6 +746,39 @@
   line-height: 1.7;
 }
 
+.ai-examples {
+  margin-top: var(--space-xl);
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.ai-examples h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.ai-examples ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem var(--space-lg);
+}
+
+.ai-examples li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  color: var(--ink-soft);
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
 .ai-assistance__note {
   margin: var(--space-xl) auto 0;
   max-width: 760px;
@@ -914,6 +951,19 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   align-items: start;
+}
+
+.plans__group-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
+}
+
+.plans__group-title--spaced {
+  margin-top: var(--space-2xl);
 }
 
 .plan-card {
@@ -1210,6 +1260,59 @@
 }
 .project-card__link:hover { opacity: 0.7; }
 
+/* PROOF */
+.proof {
+  border-top: 1px solid var(--rule);
+  background: var(--paper-warm);
+}
+
+.proof__intro {
+  max-width: 760px;
+  margin-bottom: var(--space-xl);
+}
+
+.proof__intro p {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-top: var(--space-md);
+}
+
+.proof__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.proof-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+.proof-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.proof-card p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.proof__note {
+  margin-top: var(--space-lg);
+  color: var(--ink-mute);
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+
 /* ── FAQ ── */
 .faq {
   border-top: 1px solid var(--rule);
@@ -1429,7 +1532,12 @@
   .services__grid,
   .ai-assistance__grid,
   .portfolio__grid,
+  .proof__grid,
   .plans__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-examples ul {
     grid-template-columns: 1fr;
   }
 

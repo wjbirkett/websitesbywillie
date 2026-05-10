@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import knicksImg from './assets/knickshub.png'
 import escapadesImg from './assets/escapades.png'
 import statcastEdgeImg from './assets/statcastedge.png'
@@ -10,23 +10,77 @@ import './App.css'
 /* ─── NAV ─── */
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const bookingLink = 'https://calendar.app.google/8TG6m9saBoppoQpVA'
+  const links = [
+    { href: '#services', label: 'Services' },
+    { href: '#ai-assistance', label: 'AI Assistance' },
+    { href: '#portfolio', label: 'Portfolio' },
+    { href: '#pricing', label: 'Pricing' },
+    { href: '#faq', label: 'FAQ' },
+  ]
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setDrawerOpen(false)
+    }
+    document.body.style.overflow = drawerOpen ? 'hidden' : ''
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [drawerOpen])
+
+  const closeDrawer = () => setDrawerOpen(false)
+
   return (
     <nav className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
       <a href="#hero" className="nav__logo" aria-label="Websites by Willie Home">W<span>.</span></a>
       <ul className="nav__links">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#ai-assistance">AI Assistance</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="https://calendar.app.google/8TG6m9saBoppoQpVA" target="_blank" rel="noopener noreferrer" className="nav__cta">Book a call</a></li>
+        {links.map((link) => (
+          <li key={link.href}><a href={link.href}>{link.label}</a></li>
+        ))}
+        <li><a href={bookingLink} target="_blank" rel="noopener noreferrer" className="nav__cta">Book a call</a></li>
       </ul>
+      <button
+        type="button"
+        className={`nav__hamburger ${drawerOpen ? 'nav__hamburger--open' : ''}`}
+        aria-label={drawerOpen ? 'Close navigation menu' : 'Open navigation menu'}
+        aria-expanded={drawerOpen}
+        aria-controls="mobile-navigation"
+        onClick={() => setDrawerOpen((open) => !open)}
+      >
+        <span />
+        <span />
+        <span />
+      </button>
+      {drawerOpen && (
+        <button
+          type="button"
+          className="nav__overlay"
+          aria-label="Close navigation menu"
+          onClick={closeDrawer}
+        />
+      )}
+      <div className={`nav__drawer ${drawerOpen ? 'nav__drawer--open' : ''}`} id="mobile-navigation" aria-hidden={!drawerOpen}>
+        <ul className="nav__drawer-links">
+          {links.map((link) => (
+            <li key={link.href}><a href={link.href} onClick={closeDrawer}>{link.label}</a></li>
+          ))}
+          <li>
+            <a href={bookingLink} target="_blank" rel="noopener noreferrer" className="nav__drawer-cta" onClick={closeDrawer}>
+              Book a call
+            </a>
+          </li>
+        </ul>
+      </div>
     </nav>
   )
 }
@@ -45,7 +99,7 @@ function Hero() {
           <span className="hero__headline--italic">businesses.</span>
         </h1>
         <p className="hero__sub animate-up delay-3">
-          No monthly platform fees. No lock-in. Just a clean, fast website
+          No required monthly website-builder fees. No lock-in. Just a clean, fast website
           your customers can find — built with modern tools and handed off
           with full ownership. From first call to launch, usually in a week.
         </p>
@@ -63,7 +117,7 @@ function Hero() {
           </a>
         </div>
         <p className="hero__tech animate-up delay-5">
-          Built with React + Vercel — meaning sites load fast, stay up, and cost nothing to host.
+          Built with modern code and reliable hosting — meaning your site is fast, portable, and not trapped inside a drag-and-drop builder.
         </p>
       </div>
       <div className="hero__rule" aria-hidden="true" />
@@ -112,15 +166,15 @@ function Services() {
     },
     {
       num: '02',
-      title: 'Multi-page sites',
+      title: 'Multi-page business sites',
       desc: 'A full website with dedicated pages for services, about, blog, and contact. Built for businesses ready to grow their online presence and rank in local search.',
       tags: ['Business site', 'Restaurant', 'Service co.'],
     },
     {
       num: '03',
-      title: 'Advanced projects',
-      desc: 'Custom tools built for specific business needs — client portals, booking systems, lead trackers, internal dashboards. Scoped and quoted per project.',
-      tags: ['Custom tool', 'Portal', 'Booking system'],
+      title: 'Custom tools, AI workflows & automations',
+      desc: 'Dashboards, lead trackers, booking tools, AI-assisted workflows, and business automations built around how your company actually works. Scoped and quoted per project.',
+      tags: ['Custom tool', 'AI workflow', 'Automation'],
     },
   ]
 
@@ -208,10 +262,7 @@ function IncludedAndWho() {
 
             {/* Hosting savings callout */}
             <div className="hosting-callout">
-              <strong>Zero monthly fees.</strong> Sites are hosted on Vercel's
-              free tier — that's a saving of roughly <strong>$1,800 over 3 years</strong> compared
-              to typical managed WordPress hosting. The domain (~$12/yr) is registered
-              in your name and paid directly by you.
+              <strong>No required website-builder subscription.</strong> Your site is custom-coded and can be hosted on a modern platform you control — without being locked into Wix, Squarespace, or a proprietary agency setup. I’ll recommend the right hosting option based on your project.
             </div>
 
             {/* Cost comparison table */}
@@ -230,7 +281,7 @@ function IncludedAndWho() {
               </div>
               <div className="cost-table__row cost-table__highlight">
                 <span><strong>Websites by Willie</strong></span>
-                <span><strong>One-time build. $0/mo hosting.</strong></span>
+                <span><strong>Custom-coded. No builder lock-in.</strong></span>
               </div>
             </div>
 
@@ -293,6 +344,13 @@ function AIAssistance() {
       desc: 'Build simple AI-powered tools, assistants, dashboards, or automations based on your workflow.',
     },
   ]
+  const examples = [
+    'New lead comes in → automatic email reply → follow-up task created',
+    'Contact form submitted → customer info saved → reminder scheduled',
+    'Weekly report generated from forms, spreadsheets, or CRM data',
+    'Draft emails, job descriptions, FAQs, social posts, or proposals with AI',
+    'Internal checklist or dashboard for tracking leads, jobs, or requests',
+  ]
 
   return (
     <section className="ai-assistance section" id="ai-assistance" aria-labelledby="ai-assistance-title">
@@ -323,14 +381,26 @@ function AIAssistance() {
           ))}
         </div>
 
+        <div className="ai-examples">
+          <h3>Examples of what we can automate</h3>
+          <ul>
+            {examples.map((example) => (
+              <li key={example}>
+                <span className="included__check">✓</span>
+                {example}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="ai-assistance__note">
           <p>
-            <strong>Pricing depends on the project.</strong> Every business works differently, so AI assistance is quoted based on your goals, tools, and level of setup needed.
+            <strong>AI assistance starts with a $300 workflow audit.</strong> Automation setup starts at $750. Custom AI tools and larger workflows are quoted based on scope.
           </p>
         </div>
 
         <div className="section-cta">
-          <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+          <a href="https://calendar.app.google/8TG6m9saBoppoQpVA" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
             Book a free 15-minute call
           </a>
         </div>
@@ -343,7 +413,7 @@ function Portfolio() {
   const projects = [
     {
       title: 'Escapades Together',
-      type: 'Business Website',
+      type: 'Local Business Website',
       desc: 'A polished marketing site for a premium event management and luxury travel company with 30+ years of excellence. Clean, conversion-focused, and brand-true.',
       img: escapadesImg,
       tags: ['Landing Page', 'Events', 'Travel'],
@@ -352,7 +422,7 @@ function Portfolio() {
     },
     {
       title: 'StatcastEdge',
-      type: 'Analytics Platform',
+      type: 'AI / Data Project',
       desc: 'A dark, data-heavy MLB forecasting platform with model context, simulation-driven dashboards, subscription access, and a polished product experience built for serious baseball research.',
       img: statcastEdgeImg,
       tags: ['Analytics', 'MLB', 'Dashboard'],
@@ -361,7 +431,7 @@ function Portfolio() {
     },
     {
       title: 'CoolBreeze HVAC',
-      type: 'Multi-Page Service Site',
+      type: 'Local Business Website',
       desc: 'A full multi-page site for a local HVAC company. Dedicated pages for services, maintenance plans, about, and contact — built to generate calls and rank in local search.',
       img: coolbreezeImg,
       tags: ['Multi-page', 'HVAC', 'Local Service'],
@@ -370,7 +440,7 @@ function Portfolio() {
     },
     {
       title: 'Saltline Kitchen',
-      type: 'One-Page Restaurant Site',
+      type: 'Local Business Website',
       desc: 'A single-page coastal restaurant site with interactive menu tabs, reservation form, photo gallery, private dining section, and hours — all in one smooth scrolling experience.',
       img: saltlineImg,
       tags: ['One-page', 'Restaurant', 'Reservations'],
@@ -379,7 +449,7 @@ function Portfolio() {
     },
     {
       title: 'KnicksHub',
-      type: 'Web App & Dashboard',
+      type: 'AI / Data Project',
       desc: 'AI-powered Knicks betting predictions, best bets, and player props. ML model trained on 5,000+ games with 65% win accuracy. Full pick grading and accountability.',
       img: knicksImg,
       tags: ['React', 'AI/ML', 'Sports Betting'],
@@ -388,14 +458,23 @@ function Portfolio() {
     },
     {
       title: 'Lead Tracker App',
-      type: 'Internal Tool / Dashboard',
-      desc: 'A custom lead management dashboard to track prospects, pipeline stages, follow-up dates, and conversion rates. No monthly SaaS fees — you own it.',
+      type: 'Custom Tool / Dashboard',
+      desc: 'A custom lead management dashboard to track prospects, pipeline stages, follow-up dates, and conversion rates. Built as an internal tool instead of another monthly SaaS subscription.',
       img: leadtrackerImg,
       tags: ['React', 'Dashboard', 'Internal Tool'],
       theme: 'neutral',
       url: 'https://lead-tracker-3562.vercel.app/',
     },
   ]
+  const projectOrder = [
+    'Escapades Together',
+    'CoolBreeze HVAC',
+    'Saltline Kitchen',
+    'Lead Tracker App',
+    'StatcastEdge',
+    'KnicksHub',
+  ]
+  const orderedProjects = projectOrder.map((title) => projects.find((project) => project.title === title)).filter(Boolean)
 
   return (
     <section className="portfolio section" id="portfolio">
@@ -405,7 +484,7 @@ function Portfolio() {
           <h2 className="section-title">Recent work</h2>
         </div>
         <div className="portfolio__grid">
-          {projects.map((p) => (
+          {orderedProjects.map((p) => (
             <div className={`project-card project-card--${p.theme}`} key={p.title}>
               <div className="project-card__img-wrap">
                 {p.img ? (
@@ -452,6 +531,46 @@ function Portfolio() {
 }
 
 /* ─── PROCESS & PRICING ─── */
+function Proof() {
+  const cards = [
+    {
+      title: 'Clear communication',
+      text: 'You get a simple scope, timeline, and checklist before the build starts — so you always know what is needed and what comes next.',
+    },
+    {
+      title: 'Ownership from day one',
+      text: 'Your domain, code, and project files are yours. No proprietary website builder lock-in.',
+    },
+    {
+      title: 'Launch-ready handoff',
+      text: 'Every project includes simple handoff notes so you understand what was delivered, where the project files are, and what to do after launch.',
+    },
+  ]
+
+  return (
+    <section className="proof section">
+      <div className="container">
+        <div className="proof__intro">
+          <span className="section-label">Proof</span>
+          <h2 className="section-title">Built for real businesses and practical results</h2>
+          <p>
+            A good website should make your business easier to understand, easier to contact, and easier to trust. I focus on clean design, fast performance, simple ownership, and clear handoff so you are not stuck relying on a platform or agency forever.
+          </p>
+        </div>
+        <div className="proof__grid">
+          {cards.map((card) => (
+            <div className="proof-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </div>
+          ))}
+        </div>
+        <p className="proof__note">Have a testimonial from a past client? Add it here later to make this section even stronger.</p>
+      </div>
+    </section>
+  )
+}
+
 function Pricing() {
   const steps = [
     {
@@ -483,9 +602,9 @@ function Pricing() {
 
   const plans = [
     {
-      name: 'One-page site',
-      price: 'From $400',
-      desc: 'Perfect for service businesses, portfolios, and anyone who needs a clean, fast online presence.',
+      name: 'One-page Starter Site',
+      price: 'From $600',
+      desc: 'Perfect for service businesses, portfolios, and personal brands that need a clean, professional online presence without extra complexity.',
       features: [
         'Single-page scrolling site',
         'Mobile-friendly design',
@@ -498,9 +617,9 @@ function Pricing() {
       ],
     },
     {
-      name: '4–5 page site',
-      price: 'From $800',
-      desc: 'A full website for businesses ready to grow their online presence and rank in local search.',
+      name: '4–5 Page Business Site',
+      price: 'From $1,200',
+      desc: 'A full website for local businesses ready to look more professional, explain their services clearly, and improve local search visibility.',
       features: [
         '4–5 custom pages',
         'Everything in the one-page package',
@@ -513,16 +632,57 @@ function Pricing() {
       featured: true,
     },
     {
-      name: 'Web app / custom',
+      name: 'Custom Web App / Internal Tool',
       price: 'By quote',
-      desc: 'Dashboards, client portals, booking tools — anything that needs custom logic and real functionality.',
+      desc: 'Dashboards, lead trackers, portals, booking tools, and custom business systems built around how your company actually works.',
       features: [
-        'Custom page count',
+        'Custom page count and functionality',
         'React app development',
-        'API integrations',
+        'API integrations where needed',
+        'Internal dashboards or client portals',
         'Revisions scoped per project',
         'Ongoing support available',
-        'Timeline by scope',
+        'Timeline based on scope',
+      ],
+    },
+  ]
+
+  const aiPlans = [
+    {
+      name: 'AI Workflow Audit',
+      price: 'From $300',
+      desc: 'A focused review of your business processes to identify where AI or automation can save time, reduce repetitive work, and improve follow-up.',
+      features: [
+        '60–90 minute workflow review',
+        'Identify repetitive tasks and bottlenecks',
+        'AI/tool recommendations',
+        'Simple automation roadmap',
+        'Prioritized next steps',
+      ],
+    },
+    {
+      name: 'Automation Setup',
+      price: 'From $750',
+      desc: 'I build and test one practical workflow, connect the tools where needed, and show you how to use it.',
+      features: [
+        'Lead follow-up automations',
+        'Form-to-email or form-to-spreadsheet workflows',
+        'Reminder systems',
+        'Report or email draft workflows',
+        'Testing and handoff notes included',
+      ],
+      featured: true,
+    },
+    {
+      name: 'Custom AI Tool / Workflow',
+      price: 'By quote',
+      desc: 'For businesses that need a custom AI assistant, internal tool, dashboard, or multi-step automation.',
+      features: [
+        'Custom AI-powered workflow',
+        'Business-specific prompts or assistants',
+        'App/tool integrations where needed',
+        'Internal dashboard or simple interface if needed',
+        'Timeline and price based on scope',
       ],
     },
   ]
@@ -554,6 +714,7 @@ function Pricing() {
         </p>
 
         {/* Plans */}
+        <h3 className="plans__group-title">Website packages</h3>
         <div className="plans__grid">
           {plans.map((plan) => (
             <div className={`plan-card ${plan.featured ? 'plan-card--featured' : ''}`} key={plan.name}>
@@ -571,7 +732,32 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="#contact" className={`btn ${plan.featured ? 'btn--primary' : 'btn--outline'}`}>
+              <a href="https://calendar.app.google/8TG6m9saBoppoQpVA" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? 'btn--primary' : 'btn--outline'}`}>
+                Book a free call
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <h3 className="plans__group-title plans__group-title--spaced">AI & automation services</h3>
+        <div className="plans__grid">
+          {aiPlans.map((plan) => (
+            <div className={`plan-card ${plan.featured ? 'plan-card--featured' : ''}`} key={plan.name}>
+              {plan.featured && <span className="plan-card__badge">Most common</span>}
+              <div className="plan-card__top">
+                <h3 className="plan-card__name">{plan.name}</h3>
+                <div className="plan-card__price">{plan.price}</div>
+                <p className="plan-card__desc">{plan.desc}</p>
+              </div>
+              <ul className="plan-card__features">
+                {plan.features.map(f => (
+                  <li key={f}>
+                    <span className="plan-check">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a href="https://calendar.app.google/8TG6m9saBoppoQpVA" target="_blank" rel="noopener noreferrer" className={`btn ${plan.featured ? 'btn--primary' : 'btn--outline'}`}>
                 Book a free call
               </a>
             </div>
@@ -579,13 +765,13 @@ function Pricing() {
         </div>
 
         <p className="plans__payment-note">
-          50% to start · 50% before launch · Stripe, ACH, Zelle, or check
+          50% to start · 50% before launch. Stripe, ACH, Zelle, or check accepted.
         </p>
         <p className="plans__addons-note">
-          Add-ons available: copywriting, logo design, extra revision rounds — quoted per project.
+          Add-ons available: copywriting, logo design, extra revision rounds, advanced SEO, automations, and AI workflow setup — quoted per project.
         </p>
         <p className="plans__maintenance-note">
-          Prefer a hands-off experience? Ask about the <strong>maintenance retainer</strong> — $50/mo covers minor updates, text changes, and priority support so you never have to touch the code.
+          Prefer a hands-off experience? The <strong>maintenance retainer</strong> is $75/mo and includes up to 30 minutes/month of minor updates and priority support.
         </p>
         <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
           <a href="https://calendar.app.google/8TG6m9saBoppoQpVA" target="_blank" rel="noopener noreferrer" className="btn btn--primary">Book a free 15-minute call →</a>
@@ -602,31 +788,39 @@ function FAQ() {
   const faqs = [
     {
       q: 'Why not just use Wix or Squarespace?',
-      a: 'DIY builders are great if you want to build the site yourself. Most business owners try them first and realize the design still looks DIY, SEO setup is confusing, and the monthly fees add up fast. I build the site for you so it looks professional from day one — and you own everything with no ongoing platform fees.',
+      a: 'DIY builders are fine if you want to build and maintain the site yourself. Most business owners try them first and realize the design still looks DIY, SEO setup is confusing, and the monthly website-builder fees add up. I build the site for you so it looks professional from day one, and you own the code and project files.',
     },
     {
       q: 'How long does it take?',
-      a: 'A one-page site is usually done in about 5 days once I have your content and the deposit has cleared. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that\'s the most common delay, not the build itself.',
+      a: 'A one-page site is usually done in about 5 business days once I have your content and the deposit has cleared. A 4–5 page site takes around 2 weeks. Timeline starts once you send logo, copy, and any photos — that is the most common delay, not the build itself.',
+    },
+    {
+      q: 'Do I have to pay monthly website-builder fees?',
+      a: 'No required website-builder subscription is needed. Your site is custom-coded and can be hosted on a modern platform you control. Depending on the project, there may be domain, hosting, email, or third-party tool costs, but I will explain those clearly before anything launches.',
+    },
+    {
+      q: 'Can you help my business use AI?',
+      a: 'Yes. I can help you figure out where AI makes sense, train you or your team on practical tools, and build automations for repetitive tasks like lead follow-ups, forms, reminders, reports, email drafts, and internal workflows. AI workflow audits start at $300, and automation setup starts at $750.',
     },
     {
       q: 'Do I need to buy my own domain?',
-      a: 'You can, or I can walk you through it. Either way, the domain needs to be registered in your name and on your card — you should own it, not me. I\'ll handle pointing it to your site.',
+      a: 'You can, or I can give you simple setup notes. Either way, the domain needs to be registered in your name and on your card — you should own it, not me. I will handle pointing it to your site.',
     },
     {
       q: 'What do I need to provide?',
-      a: 'At minimum: your logo (or I can help create something simple), the text for each page, and any photos. If you don\'t have photos, I\'ll use high-quality stock. If you\'re not sure what to write, I can help with copy for an additional fee.',
+      a: 'At minimum: your logo, the text for each page, and any photos. If you do not have photos, I can use high-quality stock. If you are not sure what to write, I can help with copy for an additional fee.',
     },
     {
       q: 'What if I need changes after launch?',
-      a: 'Minor bug fixes and small tweaks are on me for 30 days after launch — no charge. After that, I offer support at $75/hr with no retainer required. If you\'d prefer a completely hands-off experience, ask about the maintenance retainer: $50/mo covers minor updates and priority support. Either way, the code is yours and you can take it to any developer at any time.',
+      a: 'Minor bug fixes and small tweaks are included for 30 days after launch. After that, support is $95/hr. Optional maintenance is $75/mo and includes up to 30 minutes/month of minor updates and priority support. Either way, the code is yours and you can take it to another developer at any time.',
     },
     {
       q: 'Can you help with copy and photos?',
-      a: 'Copywriting and sourcing/editing photos can be added to any project. Just mention it on the call and I\'ll include it in the quote.',
+      a: 'Copywriting and sourcing/editing photos can be added to any project. Just mention it on the call and I will include it in the quote.',
     },
     {
       q: 'How does payment work?',
-      a: '50% upfront to start, 50% before launch. I accept Stripe (credit/debit card), ACH bank transfer, Zelle, or business check. The deposit locks in your spot and covers the build. Final payment is due before the domain goes live.',
+      a: '50% upfront to start, 50% before launch. I accept Stripe, ACH bank transfer, Zelle, or business check. The deposit locks in your spot and covers the build. Final payment is due before the domain goes live.',
     },
   ]
 
@@ -759,9 +953,10 @@ function Contact() {
                   >
                     <option value="">Select one</option>
                     <option value="One-page website">One-page website</option>
-                    <option value="Multi-page website">Multi-page website</option>
-                    <option value="Web app / custom tool">Web app / custom tool</option>
+                    <option value="4–5 page website">4–5 page website</option>
+                    <option value="Custom web app / internal tool">Custom web app / internal tool</option>
                     <option value="AI Assistance / Workflow Automation">AI Assistance / Workflow Automation</option>
+                    <option value="Maintenance / updates">Maintenance / updates</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
                 </div>
@@ -769,7 +964,7 @@ function Contact() {
                   <label htmlFor="message">What do you need?</label>
                   <textarea
                     id="message" name="message" rows="5" required
-                    placeholder="Tell me about your business and what you're looking for..."
+                    placeholder="Tell me about your business and whether you need a website, AI workflow, automation, updates, or a custom tool..."
                     value={form.message} onChange={handleChange}
                   />
                 </div>
@@ -809,10 +1004,11 @@ export default function App() {
         <Hero />
         <PainPoints />
         <Services />
+        <AIAssistance />
         <IncludedAndWho />
         <Portfolio />
+        <Proof />
         <Pricing />
-        <AIAssistance />
         <FAQ />
         <Contact />
       </main>
