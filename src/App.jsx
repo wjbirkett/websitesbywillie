@@ -173,7 +173,7 @@ function IncludedAndWho() {
     { label: 'Secure HTTPS / SSL',         benefit: 'protects visitors and builds trust' },
     { label: 'Google indexing setup',      benefit: 'gets your site into search results faster' },
     { label: 'Domain connection',          benefit: 'your domain, pointed and ready' },
-    { label: 'Loom walkthrough on handoff', benefit: 'so you always know how things work' },
+    { label: 'Simple launch handoff notes', benefit: 'so you know where everything is and what to do after launch' },
   ]
 
   const niches = [
@@ -238,6 +238,11 @@ function IncludedAndWho() {
             <div className="guarantee">
               <span className="guarantee__icon">✓</span>
               <p><strong>My guarantee:</strong> You won't pay the final invoice until you're completely happy with the design.</p>
+            </div>
+
+            <div className="guarantee">
+              <span className="guarantee__icon">✓</span>
+              <p><strong>Launch-ready handoff:</strong> Every project includes simple handoff notes so you understand what was delivered, where the project files are, and what to do after launch.</p>
             </div>
 
             <div className="section-cta" style={{marginTop: 'var(--space-lg)'}}>
@@ -472,7 +477,7 @@ function Pricing() {
     {
       num: '5',
       title: 'Launch & handoff',
-      desc: 'Your site goes live on your domain. You get a Loom walkthrough video and all the code. Built with industry-standard code — not proprietary builders.',
+      desc: 'Your site goes live on your domain. You get simple handoff notes and the project files/code. Built with industry-standard code — not proprietary builders.',
     },
   ]
 
@@ -486,10 +491,10 @@ function Pricing() {
         'Mobile-friendly design',
         'Contact form',
         'Basic SEO setup',
-        'Custom domain + hosting setup',
+        'Domain + hosting setup guidance',
         '1 round of revisions',
-        'Loom walkthrough on handoff',
-        'Delivered in ~5 days',
+        'Simple launch handoff notes',
+        'Delivered in about 5 business days once content is ready',
       ],
     },
     {
@@ -497,13 +502,13 @@ function Pricing() {
       price: 'From $800',
       desc: 'A full website for businesses ready to grow their online presence and rank in local search.',
       features: [
-        '4–5 page design',
-        'Everything in one-page',
+        '4–5 custom pages',
+        'Everything in the one-page package',
         'Basic SEO setup',
         'Google indexing setup',
         '2 rounds of revisions',
-        'Loom walkthrough on handoff',
-        'Delivered in ~2 weeks',
+        'Simple launch handoff notes',
+        'Delivered in about 2 weeks once content is ready',
       ],
       featured: true,
     },
