@@ -565,7 +565,6 @@ function Proof() {
             </div>
           ))}
         </div>
-        <p className="proof__note">Have a testimonial from a past client? Add it here later to make this section even stronger.</p>
       </div>
     </section>
   )
