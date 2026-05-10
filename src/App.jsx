@@ -21,6 +21,7 @@ function Nav() {
       <a href="#hero" className="nav__logo" aria-label="Websites by Willie Home">W<span>.</span></a>
       <ul className="nav__links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#ai-assistance">AI Assistance</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -268,6 +269,71 @@ function IncludedAndWho() {
 }
 
 /* ─── PORTFOLIO ─── */
+function AIAssistance() {
+  const features = [
+    {
+      title: 'AI Tool Guidance',
+      desc: 'Learn how to use tools like ChatGPT and other AI platforms for your specific business needs.',
+    },
+    {
+      title: 'Workflow Automation',
+      desc: 'Automate repetitive tasks such as lead follow-ups, form submissions, reminders, reports, and email drafts.',
+    },
+    {
+      title: 'Business Process Review',
+      desc: 'Identify where your team is losing time and where AI or automation could make the biggest difference.',
+    },
+    {
+      title: 'Custom AI Solutions',
+      desc: 'Build simple AI-powered tools, assistants, dashboards, or automations based on your workflow.',
+    },
+  ]
+
+  return (
+    <section className="ai-assistance section" id="ai-assistance" aria-labelledby="ai-assistance-title">
+      <div className="container">
+        <div className="ai-assistance__intro">
+          <span className="section-label">AI Assistance</span>
+          <h2 className="section-title" id="ai-assistance-title">AI Assistance & Workflow Automation</h2>
+          <p className="ai-assistance__sub">
+            Use AI to save time in your business — without overcomplicating it.
+          </p>
+          <div className="ai-assistance__body">
+            <p>
+              AI can help your business, but only if it is set up around the way you actually work. I help small businesses figure out where AI makes sense, how to use it day-to-day, and how to automate repetitive tasks like follow-ups, intake forms, emails, reports, content drafts, scheduling, and internal processes.
+            </p>
+            <p>
+              Whether you need help learning how to use AI tools, building a custom workflow, or connecting apps so your business runs smoother, we can map out a solution that fits your company.
+            </p>
+          </div>
+        </div>
+
+        <div className="ai-assistance__grid">
+          {features.map((feature, index) => (
+            <div className="ai-feature-card" key={feature.title}>
+              <span className="ai-feature-card__num">{String(index + 1).padStart(2, '0')}</span>
+              <h3 className="ai-feature-card__title">{feature.title}</h3>
+              <p className="ai-feature-card__desc">{feature.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="ai-assistance__note">
+          <p>
+            <strong>Pricing depends on the project.</strong> Every business works differently, so AI assistance is quoted based on your goals, tools, and level of setup needed.
+          </p>
+        </div>
+
+        <div className="section-cta">
+          <a href="https://calendly.com/willie-websitesbywillie/15min" target="_blank" rel="noopener noreferrer" className="btn btn--primary">
+            Book a free 15-minute call
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 function Portfolio() {
   const projects = [
     {
@@ -599,7 +665,7 @@ function FAQ() {
 
 /* ─── CONTACT ─── */
 function Contact() {
-  const [form, setForm] = useState({ name: '', business: '', email: '', message: '' })
+  const [form, setForm] = useState({ name: '', business: '', email: '', projectType: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -614,7 +680,7 @@ function Contact() {
         body: JSON.stringify(form)
       })
       setSubmitted(true)
-      setForm({ name: '', business: '', email: '', message: '' })
+      setForm({ name: '', business: '', email: '', projectType: '', message: '' })
     } catch (err) {
       console.error('Form error:', err)
     } finally {
@@ -679,6 +745,22 @@ function Contact() {
                   />
                 </div>
                 <div className="form-field">
+                  <label htmlFor="projectType">Project type</label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={form.projectType}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select one</option>
+                    <option value="One-page website">One-page website</option>
+                    <option value="Multi-page website">Multi-page website</option>
+                    <option value="Web app / custom tool">Web app / custom tool</option>
+                    <option value="AI Assistance / Workflow Automation">AI Assistance / Workflow Automation</option>
+                    <option value="Not sure yet">Not sure yet</option>
+                  </select>
+                </div>
+                <div className="form-field">
                   <label htmlFor="message">What do you need?</label>
                   <textarea
                     id="message" name="message" rows="5" required
@@ -725,6 +807,7 @@ export default function App() {
         <IncludedAndWho />
         <Portfolio />
         <Pricing />
+        <AIAssistance />
         <FAQ />
         <Contact />
       </main>
