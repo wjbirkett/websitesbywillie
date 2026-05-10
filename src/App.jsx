@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import knicksImg from './assets/knickshub.png'
 import escapadesImg from './assets/escapades.png'
-import barberImg from './assets/barber.png'
+import statcastEdgeImg from './assets/statcastedge.png'
 import saltlineImg from './assets/saltline.png'
 import coolbreezeImg from './assets/coolbreeze.png'
 import leadtrackerImg from './assets/leadtracker.png'
@@ -346,13 +346,13 @@ function Portfolio() {
       url: 'https://escapadestogether.com/',
     },
     {
-      title: 'Gulf Coast Barbers',
-      type: 'One-Page Business Site',
-      desc: 'A sharp, modern one-page site for a local barbershop. Online booking, services menu, and a design that makes walk-ins want to come back.',
-      img: barberImg,
-      tags: ['One-page', 'Local Business', 'Barber'],
+      title: 'StatcastEdge',
+      type: 'Analytics Platform',
+      desc: 'A dark, data-heavy MLB forecasting platform with model context, simulation-driven dashboards, subscription access, and a polished product experience built for serious baseball research.',
+      img: statcastEdgeImg,
+      tags: ['Analytics', 'MLB', 'Dashboard'],
       theme: 'dark',
-      url: 'https://gulf-coast-barbers.vercel.app/',
+      url: 'https://www.statcastedge.com/',
     },
     {
       title: 'CoolBreeze HVAC',
