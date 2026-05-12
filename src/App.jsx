@@ -3,7 +3,7 @@ import knicksImg from './assets/knickshub.png'
 import escapadesImg from './assets/escapades.png'
 import statcastEdgeImg from './assets/statcastedge.png'
 import saltlineImg from './assets/saltline.png'
-import coolbreezeImg from './assets/coolbreeze.png'
+import opskitVaultImg from './assets/opskit-vault.png'
 import leadtrackerImg from './assets/leadtracker.png'
 import './App.css'
 
@@ -430,13 +430,13 @@ function Portfolio() {
       url: 'https://www.statcastedge.com/',
     },
     {
-      title: 'CoolBreeze HVAC',
-      type: 'Local Business Website',
-      desc: 'A full multi-page site for a local HVAC company. Dedicated pages for services, maintenance plans, about, and contact — built to generate calls and rank in local search.',
-      img: coolbreezeImg,
-      tags: ['Multi-page', 'HVAC', 'Local Service'],
+      title: 'OpsKit Vault',
+      type: 'Business Template Store',
+      desc: 'A practical product site for ready-to-use admin scripts, checklists, spreadsheets, and workflow kits that help busy service companies clean up follow-up without building systems from scratch.',
+      img: opskitVaultImg,
+      tags: ['Templates', 'Operations', 'Service Business'],
       theme: 'neutral',
-      url: 'https://coolbreeze-hvac-green.vercel.app/',
+      url: 'https://opskit-vault-site.vercel.app/',
     },
     {
       title: 'Saltline Kitchen',
@@ -468,7 +468,7 @@ function Portfolio() {
   ]
   const projectOrder = [
     'Escapades Together',
-    'CoolBreeze HVAC',
+    'OpsKit Vault',
     'Saltline Kitchen',
     'Lead Tracker App',
     'StatcastEdge',
