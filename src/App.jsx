@@ -649,7 +649,7 @@ function Pricing() {
   const aiPlans = [
     {
       name: 'AI Workflow Audit',
-      price: 'From $300',
+      price: 'From $150',
       desc: 'A focused review of your business processes to identify where AI or automation can save time, reduce repetitive work, and improve follow-up.',
       features: [
         '60–90 minute workflow review',
@@ -661,7 +661,7 @@ function Pricing() {
     },
     {
       name: 'Automation Setup',
-      price: 'From $800',
+      price: 'From $600',
       desc: 'I build and test one practical workflow, connect the tools where needed, and show you how to use it.',
       features: [
         'Lead follow-up automations',
