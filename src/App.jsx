@@ -395,7 +395,7 @@ function AIAssistance() {
 
         <div className="ai-assistance__note">
           <p>
-            <strong>AI assistance starts with a $300 workflow audit.</strong> Automation setup starts at $750. Custom AI tools and larger workflows are quoted based on scope.
+            <strong>AI assistance starts with a $300 workflow audit.</strong> Automation setup starts at $800. Custom AI tools and larger workflows are quoted based on scope.
           </p>
         </div>
 
@@ -602,7 +602,7 @@ function Pricing() {
   const plans = [
     {
       name: 'One-page Starter Site',
-      price: 'From $600',
+      price: 'From $300',
       desc: 'Perfect for service businesses, portfolios, and personal brands that need a clean, professional online presence without extra complexity.',
       features: [
         'Single-page scrolling site',
@@ -617,7 +617,7 @@ function Pricing() {
     },
     {
       name: '4–5 Page Business Site',
-      price: 'From $1,200',
+      price: 'From $800',
       desc: 'A full website for local businesses ready to look more professional, explain their services clearly, and improve local search visibility.',
       features: [
         '4–5 custom pages',
@@ -661,7 +661,7 @@ function Pricing() {
     },
     {
       name: 'Automation Setup',
-      price: 'From $750',
+      price: 'From $800',
       desc: 'I build and test one practical workflow, connect the tools where needed, and show you how to use it.',
       features: [
         'Lead follow-up automations',
@@ -799,7 +799,7 @@ function FAQ() {
     },
     {
       q: 'Can you help my business use AI?',
-      a: 'Yes. I can help you figure out where AI makes sense, train you or your team on practical tools, and build automations for repetitive tasks like lead follow-ups, forms, reminders, reports, email drafts, and internal workflows. AI workflow audits start at $300, and automation setup starts at $750.',
+      a: 'Yes. I can help you figure out where AI makes sense, train you or your team on practical tools, and build automations for repetitive tasks like lead follow-ups, forms, reminders, reports, email drafts, and internal workflows. AI workflow audits start at $300, and automation setup starts at $800.',
     },
     {
       q: 'Do I need to buy my own domain?',
