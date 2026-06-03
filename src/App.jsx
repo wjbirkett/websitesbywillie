@@ -395,7 +395,7 @@ function AIAssistance() {
 
         <div className="ai-assistance__note">
           <p>
-            <strong>AI assistance starts with a $300 workflow audit.</strong> Automation setup starts at $800. Custom AI tools and larger workflows are quoted based on scope.
+            <strong>AI assistance starts with a $150 workflow audit.</strong> Automation setup starts at $600. Custom AI tools and larger workflows are quoted based on scope.
           </p>
         </div>
 
@@ -799,7 +799,7 @@ function FAQ() {
     },
     {
       q: 'Can you help my business use AI?',
-      a: 'Yes. I can help you figure out where AI makes sense, train you or your team on practical tools, and build automations for repetitive tasks like lead follow-ups, forms, reminders, reports, email drafts, and internal workflows. AI workflow audits start at $300, and automation setup starts at $800.',
+      a: 'Yes. I can help you figure out where AI makes sense, train you or your team on practical tools, and build automations for repetitive tasks like lead follow-ups, forms, reminders, reports, email drafts, and internal workflows. AI workflow audits start at $150, and automation setup starts at $600.',
     },
     {
       q: 'Do I need to buy my own domain?',
