@@ -3,7 +3,7 @@ import knicksImg from './assets/knickshub.png'
 import escapadesImg from './assets/escapades.png'
 import statcastEdgeImg from './assets/statcastedge.png'
 import saltlineImg from './assets/saltline.png'
-import opskitVaultImg from './assets/opskit-vault.png'
+import jcRoofingImg from './assets/jc-roofing.jpg'
 import leadtrackerImg from './assets/leadtracker.png'
 import './App.css'
 
@@ -430,13 +430,13 @@ function Portfolio() {
       url: 'https://www.statcastedge.com/',
     },
     {
-      title: 'OpsKit Vault',
-      type: 'Business Template Store',
-      desc: 'A practical product site for ready-to-use admin scripts, checklists, spreadsheets, and workflow kits that help busy service companies clean up follow-up without building systems from scratch.',
-      img: opskitVaultImg,
-      tags: ['Templates', 'Operations', 'Service Business'],
+      title: 'JC Roofing & Exteriors',
+      type: 'Local Business Website',
+      desc: 'A custom website for an owner-operated roofing and exterior business in Fairfield County. Real project galleries, clear service pages, and easy estimate requests bring his craftsmanship online.',
+      img: jcRoofingImg,
+      tags: ['Roofing', 'Local Business', 'Custom Website'],
       theme: 'neutral',
-      url: 'https://opskit-vault-site.vercel.app/',
+      url: 'https://jcroofingandexteriorsllc.com/',
     },
     {
       title: 'Saltline Kitchen',
@@ -468,7 +468,7 @@ function Portfolio() {
   ]
   const projectOrder = [
     'Escapades Together',
-    'OpsKit Vault',
+    'JC Roofing & Exteriors',
     'Saltline Kitchen',
     'Lead Tracker App',
     'StatcastEdge',
